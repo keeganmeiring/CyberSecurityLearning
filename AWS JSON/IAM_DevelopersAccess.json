@@ -1,0 +1,12 @@
+{
+    "Version": "2012-10-17",
+    "Statement": {
+        "Sid": "DevelopersAllowGitBackend",
+        "Effect": "Allow",
+        "Action": [
+            "codecommit:GitPull",
+            "codecommit:GitPush"
+        ],
+        "Resource": "arn:aws:codecommit:us-east-1:123456789012:backend-service"
+            }
+}

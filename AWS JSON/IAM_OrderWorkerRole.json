@@ -1,0 +1,25 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [{
+        "Sid": "OrderProcessing",
+        "Effect": "Allow",
+        "Action": [
+            "sqs:ReceiveMessage",
+            "sqs:DeleteMessage"
+        ],
+        "Resource": "arn:aws:sqs:us-east-1:123456789012:order-processing-queue",
+        "Condition": {
+            "IpAddress": {
+                "aws:SourceIp": "10.0.0.0/16"
+            }
+        }
+    },
+    {
+         "Sid": "DenyPurge",
+        "Effect": "Deny",
+        "Action": [
+            "sqs:PurgeQueue"
+        ],
+        "Resource": "arn:aws:sqs:us-east-1:123456789012:order-processing-queue"
+    }]
+}

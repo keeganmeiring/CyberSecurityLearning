@@ -1,0 +1,27 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+    {
+        "Sid": "MarketingAssets_AliceAllow",
+        "Effect": "Allow",
+        "Principal": {
+            "AWS": "arn:aws:iam::123456789012:user/alice"
+        },
+        "Action": [
+            "s3:GetObject"
+        ],
+        "Resource": "arn:aws:s3:::acme-marketing-assets/*"
+            },
+    {
+        "Sid": "MarketingAssets_DenyBob",
+        "Effect": "Deny",
+        "Principal": {
+            "AWS": "arn:aws:iam::123456789012:user/bob"
+        },
+        "Action": [
+            "s3:GetObject"
+        ],
+        "Resource": "arn:aws:s3:::acme-marketing-assets/*"
+        }
+    ]
+}

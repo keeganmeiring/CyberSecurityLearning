@@ -1,0 +1,16 @@
+{
+    "Version": "2012-10-17",
+    "Statement": {
+        "Sid": "",
+        "Effect": "",
+        "Action": [
+            ""
+        ],
+        "Resource": "arn:aws:TYPE(s3/ec2/sqs):REGION(us-east-1):ACCOUNT_ID:Resource_Name(bucket/db name)",
+        "Condition": {
+            "ConditionOperator": {
+                "Condition:key": "value"
+            }
+        }
+    }
+}

@@ -1,0 +1,33 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [{
+        "Sid": "Support_MonitorDistribution",
+        "Effect": "Allow",
+        "Action": [
+            "cloudfront:GetDistribution"
+        ],
+        "Resource": "arn:aws:cloudfront::123456789012:distribution/E1A2B3C4D5E6F7"
+            },
+        {
+         "Sid": "Support_EnforceMFAValidation",
+        "Effect": "Allow",
+        "Action": [
+            "cloudfront:CreateInvalidation"
+        ],
+        "Resource": "arn:aws:cloudfront::123456789012:distribution/E1A2B3C4D5E6F7",
+        "Condition": {
+             "Bool": {
+                "aws:MultiFactorAuthPresent": "true"
+            }    
+            }
+        },
+            {
+        "Sid": "Support_DenyDeleteCFDistribution",
+        "Effect": "Deny",
+        "Action": [
+            "cloudfront:DeleteDistribution"
+        ],
+        "Resource": "arn:aws:cloudfront::123456789012:distribution/E1A2B3C4D5E6F7"
+            }
+        ]
+}

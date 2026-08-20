@@ -1,0 +1,33 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [{
+        "Sid": "S3AdminAccessBackups",
+        "Effect": "Allow",
+        "Action": [
+            "s3:ListBucket"
+        ],
+        "Resource": "arn:aws:s3:::acme-prod-backups"
+            },
+        {
+         "Sid": "S3AdminPutObjectInternal",
+        "Effect": "Allow",
+        "Action": [
+            "s3:PutObject"
+        ],
+        "Resource": "arn:aws:s3:::acme-prod-backups/*",
+        "Condition": {
+            "IpAddress": {
+                "aws:SourceIp": "10.0.0.0/16"
+            }
+        }
+            },
+            {
+        "Sid": "S3AdminDenyDelete",
+        "Effect": "Deny",
+        "Action": [
+            "s3:DeleteObject"
+        ],
+        "Resource": "arn:aws:s3:::acme-prod-backups/*"
+            }
+        ]
+}

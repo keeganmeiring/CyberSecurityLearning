@@ -1,0 +1,12 @@
+{
+    "Version": "2012-10-17",
+    "Statement": {
+        "Sid": "PersonalFolderAccess",
+        "Effect": "Allow",
+        "Action": [
+            "s3:GetObject",
+            "s3:PutObject"
+        ],
+        "Resource": "arn:aws:s3:::acme-employee-workspace/${aws:username}/*"
+            }
+}

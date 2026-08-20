@@ -1,0 +1,12 @@
+{
+    "Version": "2012-10-17",
+    "Statement": {
+        "Sid": "QAServiceTests",
+        "Effect": "Allow",
+        "Action": [
+            "codebuild:StartBuild",
+            "codebuild:BatchGetBuilds"
+        ],
+        "Resource": "arn:aws:codebuild:us-east-1:123456789012:project/backend-service-tests"
+            }
+}

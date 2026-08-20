@@ -1,0 +1,19 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [{
+        "Sid": "SendOrderConfirmations",
+        "Effect": "Allow",
+        "Action": [
+            "sns:Publish"    
+        ],
+        "Resource": "arn:aws:sns:us-east-1:123456789012:order-confirmations"
+            }, {
+                "Sid": "PreventSubscribeAndDelete",
+        "Effect": "Deny",
+        "Action": [
+            "sns:Subscribe",
+            "sns:DeleteTopic"    
+        ],
+        "Resource": "arn:aws:sns:us-east-1:123456789012:order-confirmations"
+    }]
+}

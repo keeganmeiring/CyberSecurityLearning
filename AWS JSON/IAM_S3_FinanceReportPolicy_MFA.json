@@ -1,0 +1,36 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [{
+        "Sid": "S3_Finance_ViewReports",
+        "Effect": "Allow",
+        "Action": [
+            "s3:ListBucket"
+        ],
+        "Resource": "arn:aws:s3:::acme-finance-reports"
+            },
+        {
+         "Sid": "S3_Finance_GetReports",
+        "Effect": "Allow",
+        "Action": [
+            "s3:GetObject"
+        ],
+        "Resource": "arn:aws:s3:::acme-finance-reports/*",
+        "Condition": {
+            "IpAddress": {
+                "aws:SourceIp": "10.0.0.0/16"
+            }, 
+            "Bool": {
+                "aws:MultiFactorAuthPresent": "true"
+            }    
+            }
+        },
+            {
+        "Sid": "S3_Finance_DenyDeleteReports",
+        "Effect": "Deny",
+        "Action": [
+            "s3:DeleteObject"
+        ],
+        "Resource": "arn:aws:s3:::acme-finance-reports/*"
+            }
+        ]
+}

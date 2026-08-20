@@ -1,0 +1,44 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [{
+        "Sid": "HR_Database_ViewRecords_MFA",
+        "Effect": "Allow",
+        "Action": [
+            "dynamodb:GetItem"
+        ],
+        "Resource": "arn:aws:dynamodb:us-east-1:123456789012:table/EmployeeRecords",
+        "Condition": {
+            "Bool": {
+                "aws:MultiFactorAuthPresent": "true"
+            }
+        }
+    },
+        {
+         "Sid": "HR_Database_Query_MFA",
+        "Effect": "Allow",
+        "Action": [
+            "dynamodb:Query"
+        ],
+        "Resource": "arn:aws:dynamodb:us-east-1:123456789012:table/EmployeeRecords",
+        "Condition": {
+             "Bool": {
+                "aws:MultiFactorAuthPresent": "true"
+            }    
+            }
+        },
+            {
+        "Sid": "HR_Database_Require_TLS",
+        "Effect": "Deny",
+        "Action": [
+            "dynamodb:GetItem",
+            "dynamodb:Query"
+        ],
+        "Resource": "arn:aws:dynamodb:us-east-1:123456789012:table/EmployeeRecords",
+        "Condition": {
+            "Bool": {
+                "aws:SecureTransport": "false"
+            }
+        }
+            }
+        ]
+}

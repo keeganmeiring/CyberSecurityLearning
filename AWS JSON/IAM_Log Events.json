@@ -1,0 +1,12 @@
+{
+    "Version": "2012-10-17",
+    "Statement": {
+        "Sid": "AppLoggerRole",
+        "Effect": "Allow",
+        "Action": [
+            "logs:CreateLogStream",
+            "logs:PutLogEvents"        
+        ],
+        "Resource": "arn:aws:logs:us-east-1:123456789012:log-group:/app/production:*"
+            }
+}
